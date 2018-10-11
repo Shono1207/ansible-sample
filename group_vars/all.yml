@@ -1,0 +1,26 @@
+---
+
+rdp_range: "{{ 49513 + 3389 + ( customer_code | int) }}"
+ssh_range: "{{ 49513 + 22 + ( customer_code | int) }}"
+
+#gateway_ssh_path: '/home/shono/coa{{ customer_code }}/gateway'
+
+#manager_ssh_path: '/home/shono/coa{{ customer_code }}/manager'
+
+
+ansible_user: ansible
+ansible_ssh_private_key_file: /home/ansible/.ssh/id_rsa
+ansible_port: 22
+ansible_fork: 20
+
+vm_plan: "Standard_A1"
+vm_cls_plan: "Standard_A2m_v2"
+vm_cli_plan: "Standard_A4_v2"
+vm_man_plan: "Standard_A2_v2"
+
+common:
+  resourcegroup: "coa{{ customer_code }}resourcegroup"
+  location: westus2
+  storage:
+    container: vhds
+    type: Standard_LRS
